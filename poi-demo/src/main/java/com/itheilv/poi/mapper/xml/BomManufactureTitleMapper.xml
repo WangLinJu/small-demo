@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheilv.poi.mapper.BomManufactureTitleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.itheilv.poi.model.BomManufactureTitle">
+        <id column="ID" property="id" />
+        <result column="NAME" property="name" />
+        <result column="CODE" property="code" />
+        <result column="NO" property="no" />
+        <result column="PROCESS_BOM_TYPE" property="processBomType" />
+        <result column="PART_NUMBER" property="partNumber" />
+        <result column="SOURCE" property="source" />
+        <result column="GUIDE_FILE_LOCATION" property="guideFileLocation" />
+        <result column="STATUS" property="status" />
+        <result column="APPLICABLE_CAR" property="applicableCar" />
+        <result column="MULTIPLE" property="multiple" />
+        <result column="WORK_STATION" property="workStation" />
+        <result column="APPLICABLE_SYSTEM" property="applicableSystem" />
+        <result column="PROJECT_ID" property="projectId" />
+        <result column="REV" property="rev" />
+        <result column="CHANGE_TYPE" property="changeType" />
+        <result column="CHANGE_REASON" property="changeReason" />
+        <result column="CHANGE_USER" property="changeUser" />
+        <result column="CHANGE_DATE" property="changeDate" />
+        <result column="OTHER" property="other" />
+        <result column="CHILD_ID" property="childId" />
+        <result column="VERSION" property="version" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="PARENT_IDS" property="parentIds" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="UPDATE_BY" property="updateBy" />
+        <result column="UPDATE_DATE" property="updateDate" />
+        <result column="REMARKS" property="remarks" />
+        <result column="DEL_FLAG" property="delFlag" />
+        <result column="TENANT_ID" property="tenantId" />
+        <result column="BOM_NAME" property="bomName" />
+        <result column="BOM_ID" property="bomId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        NAME, CODE, NO, PROCESS_BOM_TYPE, PART_NUMBER, SOURCE, GUIDE_FILE_LOCATION, STATUS, APPLICABLE_CAR, MULTIPLE, WORK_STATION, APPLICABLE_SYSTEM, PROJECT_ID, REV, CHANGE_TYPE, CHANGE_REASON, CHANGE_USER, CHANGE_DATE, OTHER, CHILD_ID, VERSION, PARENT_ID, PARENT_IDS, ID, CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE, REMARKS, DEL_FLAG, TENANT_ID, BOM_NAME, BOM_ID
+    </sql>
+
+</mapper>

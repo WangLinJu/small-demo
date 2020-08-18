@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheilv.poi.mapper.BomApprovalMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.itheilv.poi.model.BomApproval">
+        <id column="ID" property="id" />
+        <result column="CHECKED_USER" property="checkedUser" />
+        <result column="CHECKED_DATE" property="checkedDate" />
+        <result column="AUDIT_USER" property="auditUser" />
+        <result column="AUDIT_DATE" property="auditDate" />
+        <result column="COUNTERSIGN_USER" property="countersignUser" />
+        <result column="COUNTERSIGN_DATE" property="countersignDate" />
+        <result column="COUNTERSIGN2_USER" property="countersign2User" />
+        <result column="COUNTERSIGN2_DATE" property="countersign2Date" />
+        <result column="STANDARDIZED_USER" property="standardizedUser" />
+        <result column="STANDARDIZED_DATE" property="standardizedDate" />
+        <result column="APPROVED_USER" property="approvedUser" />
+        <result column="APPROVED_DATE" property="approvedDate" />
+        <result column="BOM_ID" property="bomId" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="UPDATE_BY" property="updateBy" />
+        <result column="UPDATE_DATE" property="updateDate" />
+        <result column="REMARKS" property="remarks" />
+        <result column="DEL_FLAG" property="delFlag" />
+        <result column="TENANT_ID" property="tenantId" />
+        <result column="BOM_TYPE" property="bomType" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        CHECKED_USER, CHECKED_DATE, AUDIT_USER, AUDIT_DATE, COUNTERSIGN_USER, COUNTERSIGN_DATE, COUNTERSIGN2_USER, COUNTERSIGN2_DATE, STANDARDIZED_USER, STANDARDIZED_DATE, APPROVED_USER, APPROVED_DATE, BOM_ID, ID, CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE, REMARKS, DEL_FLAG, TENANT_ID, BOM_TYPE
+    </sql>
+
+</mapper>

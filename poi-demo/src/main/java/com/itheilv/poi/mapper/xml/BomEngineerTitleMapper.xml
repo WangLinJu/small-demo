@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheilv.poi.mapper.BomEngineerTitleMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.itheilv.poi.model.BomEngineerTitle">
+        <id column="ID" property="id" />
+        <result column="NAME" property="name" />
+        <result column="CODE" property="code" />
+        <result column="REV" property="rev" />
+        <result column="DESCRIPTION" property="description" />
+        <result column="SIGNATURE_USER" property="signatureUser" />
+        <result column="SIGNATURE_DATE" property="signatureDate" />
+        <result column="DESIGNED_USER" property="designedUser" />
+        <result column="DESIGNED_DATE" property="designedDate" />
+        <result column="STATUS" property="status" />
+        <result column="APPLICABLE_CAR" property="applicableCar" />
+        <result column="MULTIPLE" property="multiple" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="PARENT_IDS" property="parentIds" />
+        <result column="CHILD_ID" property="childId" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="UPDATE_BY" property="updateBy" />
+        <result column="UPDATE_DATE" property="updateDate" />
+        <result column="REMARKS" property="remarks" />
+        <result column="DEL_FLAG" property="delFlag" />
+        <result column="TENANT_ID" property="tenantId" />
+        <result column="PROJECT_ID" property="projectId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        NAME, CODE, REV, DESCRIPTION, SIGNATURE_USER, SIGNATURE_DATE, DESIGNED_USER, DESIGNED_DATE, STATUS, APPLICABLE_CAR, MULTIPLE, PARENT_ID, PARENT_IDS, CHILD_ID, ID, CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE, REMARKS, DEL_FLAG, TENANT_ID, PROJECT_ID
+    </sql>
+
+</mapper>

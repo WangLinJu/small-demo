@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheilv.poi.mapper.BomEngineerMaterialMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.itheilv.poi.model.BomEngineerMaterial">
+        <id column="ID" property="id" />
+        <result column="NO" property="no" />
+        <result column="LAYER" property="layer" />
+        <result column="REP" property="rep" />
+        <result column="QTY" property="qty" />
+        <result column="MATERIAL_CODE" property="materialCode" />
+        <result column="PART_NUMBER" property="partNumber" />
+        <result column="REV" property="rev" />
+        <result column="CHINESE_DESIGNATION" property="chineseDesignation" />
+        <result column="ENGLISH_DESIGNATION" property="englishDesignation" />
+        <result column="SINGLE_WEIGHT" property="singleWeight" />
+        <result column="TOTAL_WEIGHT" property="totalWeight" />
+        <result column="MATERIAL_STANDARD" property="materialStandard" />
+        <result column="MAKE_OR_BUY" property="makeOrBuy" />
+        <result column="MANUFACTURE_PROCESS" property="manufactureProcess" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="PARENT_IDS" property="parentIds" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="UPDATE_BY" property="updateBy" />
+        <result column="UPDATE_DATE" property="updateDate" />
+        <result column="REMARKS" property="remarks" />
+        <result column="DEL_FLAG" property="delFlag" />
+        <result column="TENANT_ID" property="tenantId" />
+        <result column="UNUSED_QTY" property="unusedQty" />
+        <result column="UNIQUE_ID" property="uniqueId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        NO, LAYER, REP, QTY, MATERIAL_CODE, PART_NUMBER, REV, CHINESE_DESIGNATION, ENGLISH_DESIGNATION, SINGLE_WEIGHT, TOTAL_WEIGHT, MATERIAL_STANDARD, MAKE_OR_BUY, MANUFACTURE_PROCESS, PARENT_ID, PARENT_IDS, ID, CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE, REMARKS, DEL_FLAG, TENANT_ID, UNUSED_QTY, UNIQUE_ID
+    </sql>
+
+</mapper>

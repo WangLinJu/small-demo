@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itheilv.poi.mapper.ResProjectMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.itheilv.poi.model.ResProject">
+        <id column="ID" property="id" />
+        <result column="NAME" property="name" />
+        <result column="CODE" property="code" />
+        <result column="SHORT_NAME" property="shortName" />
+        <result column="STATUS" property="status" />
+        <result column="START_DATE" property="startDate" />
+        <result column="FINISH_DATE" property="finishDate" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="CREATE_DATE" property="createDate" />
+        <result column="UPDATE_BY" property="updateBy" />
+        <result column="UPDATE_DATE" property="updateDate" />
+        <result column="REMARKS" property="remarks" />
+        <result column="DEL_FLAG" property="delFlag" />
+        <result column="TENANT_ID" property="tenantId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        NAME, CODE, SHORT_NAME, STATUS, START_DATE, FINISH_DATE, ID, CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE, REMARKS, DEL_FLAG, TENANT_ID
+    </sql>
+
+</mapper>
