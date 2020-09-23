@@ -3,14 +3,12 @@ package com.itheilv.mybatisplus;
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.GlobalConfig;
-import com.baomidou.mybatisplus.generator.config.PackageConfig;
-import com.baomidou.mybatisplus.generator.config.StrategyConfig;
+import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.LikeTable;
 import com.baomidou.mybatisplus.generator.config.po.TableFill;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.itheilv.mybatisplus.common.PropertiesFileUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +18,14 @@ import java.util.List;
  * @since 2020-09-22
  */
 public class Generator {
-    private static final String MODULE = "poi";
+    private static final String MODULE = "mybatisplus";
     private static final String PARENT_NAME = "com.itheilv";
     private static final String TABLE_PREFIX = "";
-    private static final String LIKE_TABLE = "BOM_MANUFACTURE_MATERIAL";
-    private static final String JDBC_DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private static final String JDBC_URL = "jdbc:oracle:thin:@127.0.0.1:1521:ORCL";
-    private static final String JDBC_USERNAME = "CM";
-    private static final String JDBC_PASSWORD = "root";
+    private static final String LIKE_TABLE = "ums_permission";
+    private static final String JDBC_DRIVER = PropertiesFileUtil.getInstance("generator").get("generator.jdbc.driver");
+    private static final String JDBC_URL = PropertiesFileUtil.getInstance("generator").get("generator.jdbc.url");
+    private static final String JDBC_USERNAME = PropertiesFileUtil.getInstance("generator").get("generator.jdbc.username");
+    private static final String JDBC_PASSWORD = PropertiesFileUtil.getInstance("generator").get("generator.jdbc.password");
 
     public static void main(String[] args) {
         //1.创建代码生成器
@@ -36,8 +34,9 @@ public class Generator {
         //2.全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
+        System.out.println(projectPath);
         //文件的输出目录
-        gc.setOutputDir(projectPath + "/src/main/java");
+        gc.setOutputDir("D:\\IdeaProject\\demo\\small-demo\\mybatis-plus\\src\\main\\java");
         //是否覆盖已有文件
         gc.setFileOverride(false);
         //是否打开输出目录
@@ -61,7 +60,7 @@ public class Generator {
 
         //3.数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setDbType(DbType.ORACLE);
+        dsc.setDbType(DbType.MYSQL);
         dsc.setDriverName(JDBC_DRIVER);
         dsc.setUrl(JDBC_URL);
         dsc.setUsername(JDBC_USERNAME);
@@ -101,6 +100,12 @@ public class Generator {
         strategy.setTableFillList(tableFills);
         mpg.setStrategy(strategy);
 
+        // 自定义模板配置，可以 copy 源码 mybatis-plus/src/main/resources/template 下面内容修改，
+        // 放置自己项目的 src/main/resources/template 目录下, 默认名称一下可以不配置，也可以自定义模板名称
+        TemplateConfig tc = new TemplateConfig();
+        tc.setEntity("template/entity.java.vm");
+        mpg.setTemplate(tc);
+//
         //6.执行
         mpg.execute();
     }
