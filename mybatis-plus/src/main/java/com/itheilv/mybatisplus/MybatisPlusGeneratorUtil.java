@@ -2,11 +2,17 @@ package com.itheilv.mybatisplus;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
+import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.LikeTable;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.itheilv.mybatisplus.base.BaseModel;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 /**
  * @author WSQ
@@ -29,17 +35,16 @@ public class MybatisPlusGeneratorUtil {
      * @param jdbcUsername 数据库账户
      * @param jdbcPassword 数据库密码
      */
-    public static void generator(String likeTable, String packageName, String jdbcDriver, String jdbcUrl, String jdbcUsername, String jdbcPassword) {
+    public static void generator(String likeTable, String packageName, String module, String jdbcDriver, String jdbcUrl, String jdbcUsername, String jdbcPassword) {
         //1.创建代码生成器
         AutoGenerator mpg = new AutoGenerator();
         //2.全局配置
         GlobalConfig gc = new GlobalConfig();
         String projectPath = System.getProperty("user.dir");
-        System.out.println(projectPath);
         //文件的输出目录
-        gc.setOutputDir(projectPath + "\\src\\main\\java");
+        gc.setOutputDir(projectPath + module + "\\src\\main\\java");
         //是否覆盖已有文件
-        gc.setFileOverride(false);
+        gc.setFileOverride(true);
         //是否打开输出目录
         gc.setOpen(false);
         //是否在xml添加二级缓存
@@ -56,7 +61,6 @@ public class MybatisPlusGeneratorUtil {
         gc.setBaseColumnList(true);
         //去掉Service接口的首字母I
         gc.setServiceName("%sService");
-
         mpg.setGlobalConfig(gc);
 
         //3.数据源配置
@@ -72,6 +76,17 @@ public class MybatisPlusGeneratorUtil {
         dsc.setUsername(jdbcUsername);
         dsc.setPassword(jdbcPassword);
         mpg.setDataSource(dsc);
+
+        // 注入自定义配置，可以在 VM 中使用 cfg.abc 设置的值
+        InjectionConfig cfg = new InjectionConfig() {
+            @Override
+            public void initMap() {
+                Map<String, Object> map = new HashMap<>();
+                map.put("StringUtils", StringUtils.class);
+                this.setMap(map);
+            }
+        };
+        mpg.setCfg(cfg);
 
         // 4.包配置
         PackageConfig pc = new PackageConfig();
@@ -96,33 +111,27 @@ public class MybatisPlusGeneratorUtil {
         strategy.setLogicDeleteFieldName("del_flag");
         //去掉布尔值的is_前缀
         strategy.setEntityBooleanColumnRemoveIsPrefix(true);
+
         // 自定义实体父类
-        strategy.setSuperEntityClass(BaseModel.class, NamingStrategy.underline_to_camel);
-
-        // 自定义实体，公共字段
-//        strategy.setSuperEntityColumns(
-//                "id", "del_flag", "remarks", "create_by", "create_date", "update_by", "update_date",
-//                "ID", "DEL_FLAG", "REMARKS", "CREATE_BY", "CREATE_DATE", "UPDATE_BY", "UPDATE_DATE");
-//        // 自定义 mapper 父类
-//        strategy.setSuperMapperClass("com.crrcdt.common.base.BaseMapper");
-//        // 自定义 service 父类
-//        strategy.setSuperServiceClass("com.crrcdt.common.base.BaseService");
-//        // 自定义 service 实现类父类
-//        strategy.setSuperServiceImplClass("com.crrcdt.common.base.BaseServiceImpl");
-//        // 自定义 controller 父类
-//        strategy.setSuperControllerClass("com.crrcdt.common.base.BaseController");
-
+        strategy.setSuperEntityClass(BaseModel.class);
+        // 自定义 mapper 父类
+        strategy.setSuperMapperClass("com.itheilv.mybatisplus.base.BaseMapper");
+        // 自定义 service 父类
+        strategy.setSuperServiceClass("com.itheilv.mybatisplus.base.BaseService");
+        // 自定义 service 实现类父类
+        strategy.setSuperServiceImplClass("com.itheilv.mybatisplus.base.BaseServiceImpl");
+        // 自定义 controller 父类
+        strategy.setSuperControllerClass("com.itheilv.mybatisplus.base.BaseController");
         mpg.setStrategy(strategy);
 
         // 自定义模板配置，可以 copy 源码 mybatis-plus/src/main/resources/template 下面内容修改，
-        // 放置自己项目的 src/main/resources/template 目录下, 默认名称一下可以不配置，也可以自定义模板名称
         TemplateConfig tc = new TemplateConfig();
         tc.setEntity("template/entity.java.vm");
-        //tc.setMapper("template/mapper.java.vm");
+        tc.setMapper("template/mapper.java.vm");
         //tc.setXml("template/mapper.xml.vm");
-        //tc.setService("template/service.java.vm");
-        //tc.setServiceImpl("template/serviceImpl.java.vm");
-        //tc.setController("template/controller.java.vm");
+        tc.setService("template/service.java.vm");
+        tc.setServiceImpl("template/serviceImpl.java.vm");
+        tc.setController("template/controller.java.vm");
         mpg.setTemplate(tc);
 
         //6.执行

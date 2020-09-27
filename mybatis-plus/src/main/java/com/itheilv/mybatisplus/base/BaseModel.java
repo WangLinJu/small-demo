@@ -25,12 +25,14 @@ public class BaseModel implements Serializable {
      */
     @ApiModelProperty(value = "删除标记（0：正常；1：删除")
     @TableLogic
+    @TableField(value = "del_flag")
     protected String delFlag;
 
     /**
      * 备注
      */
     @ApiModelProperty(value = "备注")
+    @TableField(value = "remarks")
     protected String remarks;
 
     /**
