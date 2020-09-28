@@ -44,12 +44,12 @@ public class BaseServiceImpl<Mapper extends BaseMapper<Record>, Record extends B
 
     @Override
     public int updateAllColumn(Record record) {
-        return 0;
+        return baseMapper.updateById(record);
     }
 
     @Override
     public int remove(String id) {
-        return 0;
+        return baseMapper.deleteById(id);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package ${package.Controller};
 #set( $camelEntity = $!{cfg.StringUtils.uncapitalize("${table.entityName}")} )
 
+import com.itheilv.mybatisplus.base.BaseResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 #if(${restControllerStyle})
@@ -49,13 +50,39 @@ public class ${table.controllerName} extends ${superControllerClass} {
     /**
      * 新增
      *
-     * @param ${camelEntity} the ${table.entityName}
+     * @param ${camelEntity} the ${camelEntity}
      * @return the object
      */
     @ApiOperation(value = "新增$!{table.comment}信息", response = ${table.entityName}.class)
     @PostMapping(value = "/")
     public Object create(@RequestBody ${table.entityName} ${camelEntity}) {
-        return ${camelEntity}Service.save(${camelEntity});
+        return BaseResult.successResultCreate(${camelEntity}Service.save(${camelEntity}));
+    }
+
+    /**
+     * 删除
+     *
+     * @param ${camelEntity}Id the ${camelEntity}
+     * @return the object
+     */
+    @ApiOperation(value = "删除$!{table.comment}信息")
+    @DeleteMapping(value = "delete${table.entityName}ById")
+    public Object delete${table.entityName}ById(String ${camelEntity}Id) {
+        int count = ${camelEntity}Service.remove(${camelEntity}Id);
+        return BaseResult.checkCountOneResult(count);
+    }
+
+    /**
+     * 修改
+     *
+     * @param ${camelEntity} the ${camelEntity}
+     * @return the object
+     */
+    @ApiOperation(value = "修改$!{table.comment}信息")
+    @PutMapping(value = "/")
+    public Object update(@RequestBody ${table.entityName} ${camelEntity}) {
+        int count = ${camelEntity}Service.updateAllColumn(${camelEntity});
+        return BaseResult.checkCountOneResult(count);
     }
 
 }

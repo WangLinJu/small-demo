@@ -81,4 +81,62 @@ public class BaseResult implements Serializable {
     public static BaseResult successResultCreate(String message, Object data) {
         return new BaseResult(SUCCESS, message, data);
     }
+
+    /**
+     * 验证返回数据是否为1
+     *
+     * @param didCount 处理数据量
+     * @return BaseResult
+     */
+    public static BaseResult checkCountOneResult(int didCount) {
+        return checkCountResult(didCount, 1);
+    }
+
+    /**
+     * 验证返回值是否一致
+     *
+     * @param didCount    处理数据
+     * @param willDoCount 期望数据条数
+     * @return BaseResult
+     */
+    public static BaseResult checkCountResult(int didCount, int willDoCount) {
+        BaseResult result = new BaseResult();
+        if (didCount <= 0) {
+            result.setCode(FAILED);
+            result.setMessage("处理失败");
+        } else if (didCount < willDoCount) {
+            result.setCode(SUCCESS);
+            result.setMessage("批量操作部分成功！");
+        } else {
+            result.setCode(SUCCESS);
+            result.setMessage("操作成功");
+        }
+
+        result.setData(didCount);
+        return result;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
+    }
 }
