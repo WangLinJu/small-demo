@@ -2,9 +2,8 @@ package com.itheilv.mybatisplus.base;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * @author WSQ
@@ -36,32 +35,18 @@ public class BaseModel implements Serializable {
     protected String remarks;
 
     /**
-     * 创建者
-     */
-    @ApiModelProperty(value = "创建者")
-    @TableField(value = "create_by", fill = FieldFill.INSERT)
-    protected String createBy;
-
-    /**
      * 创建时间
      */
     @ApiModelProperty(value = "创建时间")
-    @TableField(value = "create_by", fill = FieldFill.INSERT)
-    protected LocalDate createDate;
-
-    /**
-     * 更新者
-     */
-    @ApiModelProperty(value = "更新者")
-    @TableField(value = "create_by", fill = FieldFill.INSERT_UPDATE)
-    protected String updateBy;
+    @TableField(value = "create_date", fill = FieldFill.INSERT)
+    protected LocalDateTime createDate;
 
     /**
      * 更新时间
      */
     @ApiModelProperty(value = "更新时间")
-    @TableField(value = "create_by", fill = FieldFill.INSERT_UPDATE)
-    protected LocalDate updateDate;
+    @TableField(value = "update_date", fill = FieldFill.INSERT_UPDATE)
+    protected LocalDateTime updateDate;
 
     public String getId() {
         return id;
@@ -87,35 +72,19 @@ public class BaseModel implements Serializable {
         this.remarks = remarks;
     }
 
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
-    }
-
-    public LocalDate getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(LocalDate createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
-
-    public LocalDate getUpdateDate() {
+    public LocalDateTime getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(LocalDate updateDate) {
+    public void setUpdateDate(LocalDateTime updateDate) {
         this.updateDate = updateDate;
     }
 
@@ -125,9 +94,7 @@ public class BaseModel implements Serializable {
                 "id='" + id +
                 ", delFlag='" + delFlag +
                 ", remarks='" + remarks +
-                ", createBy='" + createBy +
                 ", createDate=" + createDate +
-                ", updateBy='" + updateBy +
                 ", updateDate=" + updateDate +
                 '}';
     }
