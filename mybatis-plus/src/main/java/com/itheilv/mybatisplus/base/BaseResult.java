@@ -1,6 +1,6 @@
 package com.itheilv.mybatisplus.base;
 
-import com.itheilv.mybatisplus.conatant.ResultConstant;
+import com.itheilv.mybatisplus.constant.ResultConstant;
 
 import java.io.Serializable;
 

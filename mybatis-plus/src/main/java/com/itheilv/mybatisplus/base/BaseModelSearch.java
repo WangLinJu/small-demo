@@ -6,9 +6,8 @@ package com.itheilv.mybatisplus.base;
  * @since 2020-09-28
  */
 public class BaseModelSearch<Record extends BaseModel> {
+
     private Record record;
-
-
 
     public BaseModelSearch() {
     }

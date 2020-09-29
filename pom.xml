@@ -17,7 +17,6 @@
     <modules>
         <module>poi-demo</module>
         <module>login-demo</module>
-        <module>mybatis-demo</module>
         <module>mybatis-plus</module>
         <module>annotation-demo</module>
     </modules>
@@ -114,6 +113,17 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>5.3.4</version>
+            </dependency>
+            <!--log-->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.30</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.2.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

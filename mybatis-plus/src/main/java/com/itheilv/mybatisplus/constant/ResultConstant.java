@@ -1,4 +1,4 @@
-package com.itheilv.mybatisplus.conatant;
+package com.itheilv.mybatisplus.constant;
 
 /**
  * @author WSQ
